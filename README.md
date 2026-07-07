@@ -10,8 +10,24 @@ Hands-on workshop labs built by [BeCloudReady](https://becloudready.com) for eng
 |---|---|---|
 | [`labs/aws-data-lake/`](labs/aws-data-lake/) | End-to-end data lake — raw ingestion → ETL → governance → CDC → analytics | S3, Glue, Athena, Lake Formation, Redshift, DMS, OpenSearch |
 | [`labs/aws-iam-policy/`](labs/aws-iam-policy/) | Read, predict, and write IAM policies using a real sandbox policy as the textbook | IAM, CloudShell |
-| [`labs/fullstack-aws/`](labs/fullstack-aws/) | Full-stack app sandbox with GitHub Copilot seats and namespace-scoped AWS access | EC2, Lambda, S3, DynamoDB, CloudFront, API Gateway |
+| [`labs/fullstack-aws/`](labs/fullstack-aws/) | Full-stack app on AWS — React + FastAPI + MongoDB + Terraform + CI/CD, 7 chapters + 4 deployable projects | React, FastAPI, Lambda, S3, DynamoDB, API Gateway, Terraform, GitHub Actions |
 | [`labs/databricks-db-agent-lakebase/`](labs/databricks-db-agent-lakebase/) | Text-to-SQL agent backed by Lakebase (Postgres), Databricks Unity Catalog, and a self-hosted vLLM endpoint | Databricks, Delta Lake, vLLM |
+
+### Full-Stack on AWS — 7-chapter curriculum
+
+| Chapter | Topic |
+|---|---|
+| 01 | Vibe Coding — FastAPI app with AI prompting |
+| 02 | Backend & Databases — CRUD API + MongoDB |
+| 03 | Testing — TDD cycle with AI assistance |
+| 04 | Security — API key auth + JWT |
+| 05 | Infrastructure — Terraform on AWS |
+| 06 | Cloud & CI/CD — Lambda, API Gateway, S3, GitHub Actions |
+| 07 | React — frontend, components, full-stack integration |
+
+4 deployable projects: Task Tracker · Notice Board · URL Bookmark Saver · Architecture Diagram
+
+---
 
 ### AWS Data Lake — 6-lab curriculum
 
