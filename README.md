@@ -11,6 +11,7 @@ Hands-on workshop labs built by [BeCloudReady](https://becloudready.com) for eng
 | [`labs/aws-data-lake/`](labs/aws-data-lake/) | End-to-end data lake — raw ingestion → ETL → governance → CDC → analytics | S3, Glue, Athena, Lake Formation, Redshift, DMS, OpenSearch |
 | [`labs/aws-iam-policy/`](labs/aws-iam-policy/) | Read, predict, and write IAM policies using a real sandbox policy as the textbook | IAM, CloudShell |
 | [`labs/fullstack-aws/`](labs/fullstack-aws/) | Full-stack app on AWS — React + FastAPI + MongoDB + Terraform + CI/CD, 7 chapters + 4 deployable projects | React, FastAPI, Lambda, S3, DynamoDB, API Gateway, Terraform, GitHub Actions |
+| [`labs/equipment-inspection/`](labs/equipment-inspection/) | Versioned inspection photos for IoT / oil & gas equipment — presigned S3 upload, DynamoDB metadata, version history UI | React, FastAPI, S3, DynamoDB, Terraform |
 | [`labs/databricks-db-agent-lakebase/`](labs/databricks-db-agent-lakebase/) | Text-to-SQL agent backed by Lakebase (Postgres), Databricks Unity Catalog, and a self-hosted vLLM endpoint | Databricks, Delta Lake, vLLM |
 
 ### Full-Stack on AWS — 7-chapter curriculum
@@ -56,6 +57,26 @@ Labs 1–3 build on each other. Labs 4–6 are standalone.
 
 **Need a workshop for your team?**
 → [becloudready.com/labs](https://becloudready.com/labs) · [Book a call](https://calendly.com/kchandank/30-mins-meeting)
+
+---
+
+## Tagging standard
+
+Every resource created in a workshop must carry these tags. The nightly cleanup workflow reads them to decide what to delete.
+
+| Tag | Example | Purpose |
+|---|---|---|
+| `Environment` | `workshop` | **Required — triggers nightly cleanup** |
+| `Workshop` | `aws-data-lake` | Which lab |
+| `CohortDate` | `2026-07-07` | When the cohort ran |
+| `Student` | `alice-johnson` | Per-student namespace |
+| `AutoDelete` | `true` (default) | Set to `false` to protect a resource |
+
+All Terraform modules in this repo apply these tags via `local.common_tags`. Resources created manually (via console or CLI) must be tagged manually.
+
+**To protect a resource from nightly deletion** — add `AutoDelete = false`. Everything else tagged `Environment = workshop` is deleted at 3 AM EST.
+
+See [`terraform/tags.tf`](terraform/tags.tf) for the shared locals block and [`tools/nightly-cleanup.py`](tools/nightly-cleanup.py) for the cleanup logic.
 
 ---
 

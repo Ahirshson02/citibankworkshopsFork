@@ -1,0 +1,58 @@
+name: Nightly Workshop Cleanup
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 3 AM EST / 2 AM EDT (7 AM UTC)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run — preview deletions without executing'
+        required: false
+        default: 'true'
+        type: choice
+        options: ['true', 'false']
+      regions:
+        description: 'Comma-separated AWS regions to scan'
+        required: false
+        default: 'us-west-2,us-east-1'
+
+jobs:
+  cleanup:
+    name: Clean workshop resources
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install boto3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id:     ${{ secrets.CLEANUP_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.CLEANUP_AWS_SECRET_ACCESS_KEY }}
+          aws-region:            us-west-2
+
+      - name: Run cleanup
+        env:
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          REGIONS: ${{ github.event.inputs.regions || 'us-west-2,us-east-1' }}
+        run: python tools/nightly-cleanup.py
+
+      - name: Upload cleanup log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cleanup-log-${{ github.run_id }}
+          path: cleanup.log
+          if-no-files-found: ignore
+          retention-days: 30
