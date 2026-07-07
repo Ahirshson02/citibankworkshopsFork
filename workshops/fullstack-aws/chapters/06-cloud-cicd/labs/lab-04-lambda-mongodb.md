@@ -28,11 +28,11 @@ Browser / curl → API Gateway → Lambda → MongoDB on EC2
 
 ### Launch the instance using Terraform
 
-Reuse the Terraform template from the previous lab (`terraform-ec2/`). Port **27017** is already open in the security group — confirm it is there before applying:
+Reuse the Terraform template from the previous lab (`chapters/06-cloud-cicd/terraform/`). Port **27017** is already open in the security group — confirm it is there before applying:
 
 ```bash
-# From the terraform-ec2/ folder
-grep -A5 "MongoDB" main.tf
+# From the terraform folder
+grep "27017" main.tf
 ```
 
 You should see:
@@ -60,7 +60,7 @@ Note the outputs — you will need the public IP and the SSH command:
 
 ```
 instance_public_ip = "x.x.x.x"
-ssh_command        = "ssh -i ssh-keys/student-employee-app-key.pem ubuntu@x.x.x.x"
+ssh_command        = "ssh -i ssh-keys/<your-name>-key.pem ubuntu@x.x.x.x"
 ```
 
 ### Install MongoDB via SSH
@@ -68,7 +68,7 @@ ssh_command        = "ssh -i ssh-keys/student-employee-app-key.pem ubuntu@x.x.x.
 Copy the SSH command from the Terraform output and connect:
 
 ```bash
-ssh -i ssh-keys/student-employee-app-key.pem ubuntu@<EC2_PUBLIC_IP>
+ssh -i ssh-keys/<your-name>-key.pem ubuntu@<EC2_PUBLIC_IP>
 ```
 
 Then run:

@@ -42,11 +42,10 @@ Type `yes` when prompted. Wait about 30 seconds.
 
 ```
 instance_public_ip = "54.123.45.67"
-ssh_command        = "ssh -i ssh-keys/student-<your-slug>-employee-app-key.pem ubuntu@54.123.45.67"
-pem_path           = "ssh-keys/student-<your-slug>-employee-app-key.pem"
+ssh_command        = "ssh -i ssh-keys/<your-name>-key.pem ubuntu@54.123.45.67"
 ```
 
-Terraform writes the private key to `ssh-keys/` inside the terraform folder. Copy the exact `ssh_command` value from your output — the filename includes your student slug.
+Terraform writes the private key to `ssh-keys/` inside the terraform folder. Copy the exact `ssh_command` value from your output.
 
 Save the public IP — you will need it throughout this lab.
 
@@ -60,7 +59,7 @@ Use the `ssh_command` from the Terraform output:
 
 ```bash
 # Use the exact ssh_command from terraform output — or construct it:
-ssh -i ssh-keys/student-<your-slug>-employee-app-key.pem ubuntu@YOUR_EC2_IP
+ssh -i ssh-keys/<your-name>-key.pem ubuntu@YOUR_EC2_IP
 ```
 
 ### Step 2: Copy and run the setup script
@@ -145,7 +144,7 @@ Add these three secrets:
 
 To get the key contents (run from `workshops/fullstack-aws/`):
 ```bash
-cat chapters/06-cloud-cicd/terraform/ssh-keys/student-<your-slug>-employee-app-key.pem
+cat chapters/06-cloud-cicd/terraform/ssh-keys/<your-name>-key.pem
 ```
 Copy everything including the `-----BEGIN RSA PRIVATE KEY-----` and `-----END RSA PRIVATE KEY-----` lines.
 
