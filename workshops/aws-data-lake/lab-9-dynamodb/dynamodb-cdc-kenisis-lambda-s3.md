@@ -1,4 +1,4 @@
-# Module 17 Lab — DynamoDB Global Tables + CDC (Console Only, No Workbench)
+#  DynamoDB Global Tables + CDC 
 
 Table: `quicklabs-student-<NUMBER>-pipeline-tracker`, primary Region `us-west-2`, replica Region
 `us-east-1`. Console only — no NoSQL Workbench.
