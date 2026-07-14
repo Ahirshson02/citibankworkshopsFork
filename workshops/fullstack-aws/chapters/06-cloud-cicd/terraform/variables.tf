@@ -3,8 +3,8 @@ variable "student_name" {
   type        = string
 }
 
-variable "cohort" {
-  description = "Workshop cohort identifier (e.g. fullstack-aws-july-2026). Tagged on every resource."
+variable "created_date" {
+  description = "Creation date for the `date` tag, format dd-mmm-yyyy (e.g. 12-Jul-2026)."
   type        = string
 }
 

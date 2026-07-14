@@ -20,6 +20,16 @@ AWS data platform skills through instructor-led, console- and CLI-driven labs �
 **Naming rule — read this once, apply it everywhere:**
 Every resource you create must be prefixed `quicklabs-<USER>-` (or `quicklabs_<USER>_` with underscores for Glue databases). Your IAM policy only allows actions on resources in your own namespace. A typo here produces `not authorized` errors.
 
+**Tagging rule — apply to every resource you create:**
+
+| Key | Value |
+|---|---|
+| `workshop` | `data-lake` |
+| `autodelete` | `true` or `false` |
+| `date` | `dd-mmm-yyyy`, e.g. `12-Jul-2026` |
+
+`autodelete=true` means it's safe for the instructor's cleanup script to delete it at the end of the batch. Use `autodelete=false` only for something you were explicitly told to keep.
+
 **Local tools you need:**
 - `psql` — for CDC and Redshift labs (`brew install libpq` on macOS, `apt install postgresql-client` on Linux)
 - AWS CLI — optional but useful for verifying resources

@@ -20,8 +20,7 @@ variable "mongo_host" {
   description = "EC2 public IP running MongoDB"
 }
 
-variable "cohort" {
-  description = "Cohort identifier (e.g. fullstack-aws-batch-a). Tagged on every resource for cohort-scoped cleanup."
+variable "created_date" {
+  description = "Creation date for the `date` tag, format dd-mmm-yyyy (e.g. 12-Jul-2026)."
   type        = string
-  default     = "fullstack-aws"
 }

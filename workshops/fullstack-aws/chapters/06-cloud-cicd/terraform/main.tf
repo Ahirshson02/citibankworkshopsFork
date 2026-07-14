@@ -17,6 +17,13 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
+  default_tags {
+    tags = {
+      workshop   = "full-stack"
+      autodelete = "true"
+      date       = var.created_date
+    }
+  }
 }
 
 # ── SSH Key ───────────────────────────────────────────────────────────────────
@@ -78,8 +85,7 @@ resource "aws_security_group" "ec2" {
   }
 
   tags = {
-    Name   = "${var.student_name}-sg"
-    Cohort = var.cohort
+    Name = "${var.student_name}-sg"
   }
 }
 
@@ -112,7 +118,6 @@ resource "aws_instance" "app" {
   EOF
 
   tags = {
-    Name   = "${var.student_name}-ec2"
-    Cohort = var.cohort
+    Name = "${var.student_name}-ec2"
   }
 }

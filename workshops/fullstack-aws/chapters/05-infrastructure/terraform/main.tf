@@ -7,8 +7,20 @@ terraform {
   }
 }
 
+variable "created_date" {
+  description = "Creation date for the `date` tag, format dd-mmm-yyyy (e.g. 12-Jul-2026)."
+  type        = string
+}
+
 provider "aws" {
   region = "us-east-1"
+  default_tags {
+    tags = {
+      workshop   = "full-stack"
+      autodelete = "true"
+      date       = var.created_date
+    }
+  }
 }
 
 resource "aws_instance" "example" {

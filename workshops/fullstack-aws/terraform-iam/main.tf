@@ -24,6 +24,13 @@
 
 provider "aws" {
   region = var.region
+  default_tags {
+    tags = {
+      workshop   = "full-stack"
+      autodelete = "true"
+      date       = var.created_date
+    }
+  }
 }
 
 data "aws_caller_identity" "current" {}

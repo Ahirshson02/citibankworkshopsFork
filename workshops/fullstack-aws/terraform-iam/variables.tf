@@ -15,3 +15,8 @@ variable "name_prefix" {
   type        = string
   default     = "quicklabs"
 }
+
+variable "created_date" {
+  description = "Batch creation date for the `date` tag, format dd-mmm-yyyy (e.g. 12-Jul-2026). Pass with -var at apply time."
+  type        = string
+}

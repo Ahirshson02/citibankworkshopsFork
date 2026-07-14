@@ -2,8 +2,9 @@ provider "aws" {
   region = var.region
   default_tags {
     tags = {
-      Project = "Quicklabs"
-      Lab     = "aws-data-lake"
+      workshop   = "data-lake"
+      autodelete = "true"
+      date       = var.created_date
     }
   }
 }

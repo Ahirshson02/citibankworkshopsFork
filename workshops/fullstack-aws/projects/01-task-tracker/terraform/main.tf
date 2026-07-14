@@ -9,8 +9,9 @@ provider "aws" {
   region = var.aws_region
   default_tags {
     tags = {
-      student = var.student_name
-      cohort  = var.cohort
+      workshop   = "full-stack"
+      autodelete = "true"
+      date       = var.created_date
     }
   }
 }
@@ -93,8 +94,6 @@ resource "aws_cloudfront_distribution" "cdn" {
   viewer_certificate {
     cloudfront_default_certificate = true
   }
-
-  tags = { Project = var.project_name }
 }
 
 resource "aws_s3_bucket_policy" "frontend" {
@@ -156,8 +155,6 @@ resource "aws_lambda_function" "api" {
       MONGO_PORT = "27017"
     }
   }
-
-  tags = { Project = var.project_name }
 }
 
 # ─────────────────────────────────────────────

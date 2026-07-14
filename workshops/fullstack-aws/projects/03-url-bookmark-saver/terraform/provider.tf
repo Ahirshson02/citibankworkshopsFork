@@ -16,8 +16,9 @@ provider "aws" {
   region = var.aws_region
   default_tags {
     tags = {
-      student = var.student_name
-      cohort  = var.cohort
+      workshop   = "full-stack"
+      autodelete = "true"
+      date       = var.created_date
     }
   }
 }
