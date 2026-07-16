@@ -31,7 +31,7 @@ A deployable, portfolio-ready full-stack app on AWS, built with AI-assisted codi
 | [03: Testing](./chapters/03-testing/) | TDD | TDD cycle, writing tests with AI assistance |
 | [04: Security](./chapters/04-security/) | Auth | API key security, JWT authentication |
 | [05: Infrastructure](./chapters/05-infrastructure/) | IaC | Terraform fundamentals, provisioning AWS resources |
-| [06: Cloud & CI/CD](./chapters/06-cloud-cicd/) | AWS | EC2, Lambda, API Gateway, S3, GitHub Actions |
+| [06: Cloud & DevOps/CI/CD](./chapters/06-cloud-cicd/) | AWS/DevOps | EC2, Lambda, API Gateway, S3, GitHub Actions |
 | [07: React](./chapters/07-react/) | Frontend | React labs, component architecture, full-stack integration |
 
 ---
@@ -107,14 +107,6 @@ This curriculum is delivered as an instructor-led workshop by [beCloudReady](htt
 - **Outcome:** deployed portfolio project + CI/CD pipeline in production
 
 [Book a cohort for your team →](https://becloudready.com/workshops)
-
----
-
-## Sandbox Setup (Instructor / Admin)
-
-The [`terraform-iam/`](./terraform-iam/) folder provisions per-student AWS sandboxes for live cohorts: IAM users, namespace-scoped managed policies, Terraform workspaces per batch.
-
-See [`admin-walkthrough.md`](./admin-walkthrough.md) for the full cohort setup process.
 
 ---
 
