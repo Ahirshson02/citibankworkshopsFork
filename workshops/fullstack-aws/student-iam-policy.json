@@ -55,6 +55,31 @@
       "Resource": "*"
     },
     {
+      "Sid": "WAFv2ForCloudFront",
+      "Effect": "Allow",
+      "Action": [
+        "wafv2:CreateWebACL",
+        "wafv2:DeleteWebACL",
+        "wafv2:UpdateWebACL",
+        "wafv2:GetWebACL",
+        "wafv2:GetWebACLForResource",
+        "wafv2:ListWebACLs",
+        "wafv2:AssociateWebACL",
+        "wafv2:DisassociateWebACL",
+        "wafv2:TagResource",
+        "wafv2:UntagResource",
+        "wafv2:ListTagsForResource",
+        "wafv2:CheckCapacity",
+        "wafv2:GetManagedRuleSet",
+        "wafv2:ListAvailableManagedRuleGroups",
+        "wafv2:ListManagedRuleSets"
+      ],
+      "Resource": [
+        "arn:aws:wafv2:us-east-1:{ACCOUNT_ID}:global/webacl/*/*",
+        "arn:aws:wafv2:us-east-1:{ACCOUNT_ID}:global/managedruleset/*/*"
+      ]
+    },
+    {
       "Sid": "FullAccessAPIGateway",
       "Effect": "Allow",
       "Action": "apigateway:*",
